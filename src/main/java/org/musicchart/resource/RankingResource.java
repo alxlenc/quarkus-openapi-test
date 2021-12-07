@@ -1,9 +1,10 @@
-package org.musicchart.resources;
+package org.musicchart.resource;
 
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
+import org.musicchart.model.Song;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -32,7 +33,7 @@ public class RankingResource {
     );
 
     @Operation(summary = "Return top songs by year",
-            description = "Given a year it returns the top 5 songs")
+            description = "Given a year it returns the top 3 songs for that year")
     @GET
     @Path("/songs/{year}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -46,7 +47,5 @@ public class RankingResource {
         return SONGS_BY_YEAR.get(year);
     }
 
-
 }
 
-record Song(int position, String title, String artist) {}
